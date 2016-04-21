@@ -1,0 +1,71 @@
+<?php $__env->startSection('content'); ?>
+
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Meine Projekte</h3>
+      </div>
+      <div class="panel-body">
+
+        <?php if($userprojects == '[]'): ?>
+            <div class="alert alert-warning" role="alert">Sie haben noch keine eigenen Projekte.</div>
+             <a href="<?php echo url('users/projekt/neu'); ?>">
+                <button class="btn btn-default">Neues Projekt anlegen</button>
+            </a>
+        <?php else: ?>
+            <div class="scp-project-slider">
+                <div id="add-new-project">  
+                    <a href="<?php echo url('users/projekt/neu'); ?>">
+                        <div>Neues Projekt anlegen</div>
+                        <div class="scp-icon-add"><i class="fa fa-plus-square"></i></div>
+                    </a>
+                </div>
+                    
+        <?php foreach($userprojects as $userproject): ?>
+            <div id="view-detail-project">
+                <a href="<?php echo url('users/projekt/meineprojekte/' . $userproject->slug); ?>"> 
+                    <p><?php echo $userproject->projektname; ?></p>
+                </a>
+            </div>
+        <?php endforeach; ?>
+
+            </div>
+        <?php endif; ?>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Marketplace</h3>
+      </div>
+      <div class="panel-body">
+
+        <?php echo Form::open(array('url' => 'users', 'id' => 'marketplace-searchfield')); ?>
+
+            <?php echo Form::text('query', null, array('placeholder' => 'Search...', 'class' => 'form-control', 'id' => 'search')); ?>
+
+        <?php echo Form::close(); ?>
+
+
+        <div class="grid" id="update">
+            <?php foreach($projects as $project): ?>
+                <a href="<?php echo url('users/projekt/' . $project->slug); ?>">
+                    <figure class="effect-zoe">
+                        <img src="<?php echo URL::asset('images/25.jpg'); ?>" alt="img25"/>
+                        <figcaption>
+                            <h2><?php echo $project->projektname; ?> <span></span></h2>
+                            <p class="description">
+                                Anzahl der Personen: <?php echo $project->anzahl_der_personen; ?> <br />
+                                Anzahl der SCP: <?php echo $project->anzahl_der_scp; ?>
+
+                            </p>
+                        </figcaption>           
+                    </figure>
+                </a>
+           <?php endforeach; ?>
+
+        </div>
+      </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

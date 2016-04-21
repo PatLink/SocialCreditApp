@@ -1,0 +1,33 @@
+<?php $__env->startSection('content'); ?>
+	
+	<h2>Development Login</h2>
+	<div class="alert alert-info" role="alert">	<p>Um sich über diesen Zugang anzumelden verwenden Sie bitte die unten stehenden Daten!</p></div>
+
+	<p><strong>Student</strong> ['username' => 'max.mustermann.13', 'password' => 'test']</p>
+	<p><strong>Dozent</strong> ['username' => 'peter.meyer', 'password' => 'test']</p>
+	<p><strong>Studiengangsleiter</strong> ['username' => 'mester', 'password' => 'test']</p>
+
+	<br />
+	
+	 <?php echo Form::open(array('url'=>'/dev', 'method'=>'POST', 'accept-charset'=>'UTF-8', 'files'=> true, 'class' => 'dropzone')); ?>
+
+
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <?php echo Form::text('username', null, ['class' => 'form-control']); ?>
+
+      </div>
+
+      <div class="form-group">
+        <label for="password">Passwort:</label>
+        <?php echo Form::password('password', ['class' => 'form-control']); ?>
+
+      </div>
+ 
+      <?php echo Form::submit('Einloggen', ['class' => 'btn btn-default']); ?>
+
+
+	 <?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

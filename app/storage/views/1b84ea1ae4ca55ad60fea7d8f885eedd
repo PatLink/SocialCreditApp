@@ -1,0 +1,141 @@
+<html lang="de">
+<head>
+	<meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+	<title>Social Credit</title>
+
+  <link rel="shortcut icon" href="<?php echo URL::asset('images/favicon.png'); ?>" type="image/png" />
+
+  <!-- CSS -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="<?php echo URL::asset('css/app.css'); ?>" media="all" rel="stylesheet" type="text/css" />
+  <link href="<?php echo URL::asset('css/owl.carousel.min.css'); ?>" media="all" rel="stylesheet" type="text/css" />
+  <link href="<?php echo URL::asset('css/owl.theme.default.min.css'); ?>" media="all" rel="stylesheet" type="text/css" />
+
+  <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+
+      <div class="container">
+
+    	<!-- Guest -->
+    	<?php if(!Session::has('username')): ?>      
+            <nav class="navbar navbar-default" role="navigation">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="<?php echo url(''); ?>">Social Credits App</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                         <li><a href="<?php echo url(); ?>"><i class="fa fa-home"></i> Startseite</a></li>
+                         <li><a href="<?php echo url('about'); ?>"><i class="fa fa-users"></i> Über uns</a></li>
+                         <li><a href="<?php echo url('impress'); ?>"><i class="fa fa-heart"></i> Impressum</a></li>
+                         <li><a href="<?php echo url('privacy'); ?>"><i class="fa fa-lock"></i> Datenschutz</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+    	<?php endif; ?>
+
+    	<!-- Student - Loged in --> 
+    	<?php if(Session::has('username')): ?>
+            <nav class="navbar navbar-default" role="navigation">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="<?php echo url(); ?>">Social Credits App</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                  
+                    <?php if(Session::get('userrole') == 1): ?>
+                      <li>
+                        <a>
+                        Social Credit Points: <?php echo Session::get('studentscps'); ?> von <?php echo Session::get('soll_workload'); ?> erreicht
+                        </a>
+                      </li>
+                    <?php endif; ?>
+
+                    <li><a><?php echo Session::get('vorname'); ?> <?php echo Session::get('nachname'); ?></a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Notifications&nbsp; <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                         <li><a href="#">Notifcation1   <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span></a></li>
+                         <li><a href="#">Notifcation1</a></li>
+                         <li><a href="#">Notifcation1</a></li>
+                         <li><a href="#">Notifcation1</a></li>
+                         <li><a href="#">Notifcation1</a></li>
+                         <li><a href="#">Notifcation1</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Menu&nbsp; <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                         <li><a href="<?php echo url('users'); ?>"><i class="fa fa-home"></i> Projekte</a></li>
+                         <?php if((Session::get('userrole') == 1) or (Session::get('userrole') == 3)): ?>
+                            <li><a href="<?php echo url('users/profil'); ?>"><i class="fa fa-user"></i> SCP Abrechnungen</a></li>
+                         <?php endif; ?>
+                         <li><a href="<?php echo url('about'); ?>"><i class="fa fa-users"></i> Über uns</a></li>
+                         <li><a href="<?php echo url('impress'); ?>"><i class="fa fa-heart"></i> Impressum</a></li>
+                         <li><a href="<?php echo url('privacy'); ?>"><i class="fa fa-lock"></i> Datenschutz</a></li>
+                         <li><a href="<?php echo url('users/logout'); ?>"><i class="fa fa-sign-out"></i> Abmelden</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+    	<?php endif; ?>
+      </div>
+
+    	<div class="clearfix"></div>
+
+    <div class="container" id="content">
+
+	    <?php echo $__env->yieldContent('content'); ?>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo URL::asset('js/owl.carousel.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo URL::asset('js/module.js'); ?>"></script>
+
+    <?php echo $__env->yieldContent('scripts'); ?>
+
+</body>
+</html>

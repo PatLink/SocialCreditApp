@@ -1,0 +1,56 @@
+<h2>Kursübersicht für Studiengangsleiter <?php echo Session::get('vorname'); ?></h2>
+
+
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default">ON12</button>
+  <button type="button" class="btn btn-default">ON13</button>
+  <button type="button" class="btn btn-default">ON14</button>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Name eines Studenten">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Suche</button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="pull-right">
+    <button type="button" id="drucken" class="btn btn-primary"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Drucken</button>
+    <button type="button" id="download" class="btn btn-primary"><span class="glyphicon glyphicon-download" aria-hidden="true"></span>&nbsp;Download</button></button>
+</div>
+
+<div class="table-responsive">
+    <table class="table">
+      <tr>
+          <th rowspan="2">Lfd Nr.</th>
+          <th rowspan="2">Projekt</th>
+          <th rowspan="2">Teilnehmer</th>
+          <th colspan="3">Stunden</th>
+       </tr>
+       <tr>
+          <th>Studiengang</th>
+          <th>Hochschule</th>
+          <th>Extern</th>
+       </tr>
+        <tr>
+          <td>1</td>
+          <td>Projekt 1</td>
+          <td>Nicole, Marcel, Jill</td>
+          <td>5</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Projekt 2</td>
+          <td>Nicole, Marcel</td>
+          <td></td>
+          <td>10</td>
+          <td></td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,110 @@
+<?php $__env->startSection('content'); ?>
+  
+
+  <a href=" <?php echo url('users'); ?>">
+    <button type="button" class="btn btn-primary">Zurück zur User-Seite</button>
+  </a>
+
+   <div class="titel">
+   		<h2>Projekt vorschlagen</h2>
+
+   </div>
+
+    <?php echo Form::open(array('url'=>'users/projekt/neu', 'method'=>'POST', 'accept-charset'=>'UTF-8', 'files'=> true, 'class' => 'dropzone')); ?>
+
+
+      <div class="form-group">
+        <label for="projektname">Name</label>
+        <?php echo Form::text('projektname', null, ['class' => 'form-control']); ?>
+
+      </div>
+
+  		<div class="form-group">
+   			<label for="beschreibung">Beschreibung</label>
+        <?php echo Form::textarea('beschreibung', null, ['class' => 'form-control']); ?>
+
+  		</div>
+  
+ 		 <div class="form-group">
+    		 <label for="betreuer_id">Betreuer</label>
+        <?php echo Form::text('betreuer_id', null, ['class' => 'form-control']); ?>
+
+ 		 </div>
+
+     <div class="form-group">
+         <label for="anzahl_der_personen">Teilnehmeranzahl</label>
+        <?php echo Form::number('anzahl_der_personen', null, ['class' => 'form-control']); ?>
+
+     </div>
+  
+  		<div class="form-group">
+    		 <label for="anzahl_der_scp">Anzahl der Socialcreditpoints Stunden</label>
+        <?php echo Form::text('anzahl_der_scp', null, ['class' => 'form-control']); ?>
+
+ 		  </div>
+
+ 		  <div class="form-group">
+        <label for="engagement_art">Engagementart</label>
+        <?php echo Form::select('engagement_art', array(
+            'Studiengang' => 'Studiengang',
+            'Hochschule' => 'Hochschule',
+            'Extern' => 'Exterm'), 'Studiengang', ['class' => 'form-control']); ?>
+
+  		</div>
+
+
+      <div class="form-group">
+        <label for="kategorie">Kategorie</label>
+        <?php echo Form::select('kategorie', array(
+            'Kategorie1' => 'Kategorie1',
+            'Kategorie2' => 'Kategorie2',
+            'Kategorie3' => 'Kategorie3'), 'Kategorie1', ['class' => 'form-control']); ?>
+
+      </div>
+
+      <div class="form-group">
+        <label for="restriktionen">restriktionen</label>
+        <?php echo Form::select('restriktionen', array(
+            'ON12' => 'ON12',
+            'ON13' => 'ON13',
+            'ON14' => 'ON14'), 'ON12', ['class' => 'form-control']); ?>
+
+      </div>
+
+  		<div class="form-group">
+    		<label for="project_file_id">Dateien</label>
+        <?php echo Form::file('project_file_id', null, ['class' => 'form-control']); ?>
+
+    		 <p class="help-block">Hier kommt noch ein Drag&Drop-Funktion.</p>
+ 		  </div>
+
+      <div class="form-group">
+        <div style="width: 400px; height: 200px; background: #999" id="dragAndDrop">
+        </div>
+
+        <label for="project_img">Projekt Bild</label>
+        <?php echo Form::file('project_img', null, ['class' => 'form-control']); ?>
+
+         <p class="help-block">Hier kommt noch ein Drag&Drop-Funktion.</p>
+      </div>
+ 
+      <?php echo Form::submit('Vorschlagen', ['class' => 'btn btn-default']); ?>
+
+      <?php echo Form::submit('Speichern', ['class' => 'btn btn-default']); ?>
+
+
+	 <?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+    <script type="text/javascript" src="<?php echo URL::asset('js/dropzone.js'); ?>"></script>
+    <script type="text/javascript">
+      // Drag & Drop Funktion für den Upload 
+      // Diese Funktion ist noch in der Bearbeitung
+      $("div#dragAndDrop").dropzone({ url: "/file/post" });
+    </script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('templates.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

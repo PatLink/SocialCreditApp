@@ -1,0 +1,38 @@
+<h2>Kursübersicht für Studiengangsleiter <?php echo Session::get('nachname'); ?></h2>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="btn-group" role="group" data-activeonload="<?php echo $kurswahl; ?>">
+            <?php for($i = 0; $i < count($kuerzel); $i++): ?>
+                <button type="button" class="btn btn-default filter" data-id="<?php echo $i; ?>">
+                    <?php echo $kuerzel[$i]; ?>
+
+                </button>
+            <?php endfor; ?>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Name eines Studenten">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Suche</button>
+            </span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="pull-right">
+            <button type="button" id="drucken" class="btn btn-primary pdf"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Drucken</button>
+            <button type="button" id="download" class="btn btn-primary pdf"><span class="glyphicon glyphicon-download" aria-hidden="true"></span>&nbsp;Download</button></button>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <tr class="header">
+        <th>Name</th>
+        <th>Vorname</th>
+        <th>Social Credit Points</th>
+        <th>Kurs</th>
+    </tr>
+<?php echo $__env->make('sites.users.profil.sgl.tabelle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</table>

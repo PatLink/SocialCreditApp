@@ -1,0 +1,13 @@
+Datenbank migrieren:
+
+PhpMyAdmin aufrufen
+http://127.0.0.1:50080/phpmyadmin/
+
+Im Menü auf "Datenbanken" klicken
+
+Eine neue Datenbank anlegen
+"SocialCreditsApp5" mit der Kollation "utf8_unicode_ci"
+
+Danach über ssh/putty den Befehl "php artisan migrate" im Verzeichnis /var/www/html/SocialCreditApp ausführen
+und php:artisan db:seed
+--> Fertig :)

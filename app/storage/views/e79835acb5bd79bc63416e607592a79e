@@ -1,0 +1,32 @@
+<h2>Social Credit Points von <?php echo Session::get('vorname'); ?> <?php echo Session::get('nachname'); ?></h2>
+
+<div class="btn-group" role="group" data-activeonload="<?php echo $aktuellesJahr; ?>">
+    <?php for($i = 0; $i < count($jahre); $i++): ?>
+        <button type="button" class="btn btn-default filter" data-id="<?php echo $i; ?>">
+            <?php echo $jahre[$i][0]; ?> / <?php echo $jahre[$i][1]; ?>
+
+        </button>
+    <?php endfor; ?>
+</div>
+
+<div class="pull-right">
+    <button type="button" id="drucken" class="btn btn-primary pdf"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Drucken</button>
+    <button type="button" id="download" class="btn btn-primary pdf"><span class="glyphicon glyphicon-download" aria-hidden="true"></span>&nbsp;Download</button></button>
+</div>
+
+<table class="table">
+    <tr>
+        <th rowspan="2">Lfd Nr.</th>
+        <th rowspan="2">Betreuer</th>
+        <th rowspan="2">Projekt</th>
+        <th colspan="3">Stunden</th>
+    </tr>
+    <tr class="header">
+        <th>Studiengang</th>
+        <th>Hochschule</th>
+        <th>Extern</th>
+    </tr>
+    <?php echo $__env->make('sites.users.profil.student.tabelle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</table>
+
+

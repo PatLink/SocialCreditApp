@@ -1,0 +1,31 @@
+<?php $__env->startSection('content'); ?>
+
+	<div id="login" class="pull-left">
+		<div class="panel panel-default">
+			<a href="https://www.dhbw-mosbach.de/no_cache/service-pages/login/socialcreditpointsapp.html">
+	        <button class="btn btn-success btn-lg scp-btn-login">
+	            DHBW Login
+	            <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+	        </button>
+	    	</a>
+    	</div>
+
+    	<div class="panel panel-default">
+	    	<a href="<?php echo url('dev'); ?>">
+	        <button class="btn btn-success btn-lg scp-btn-login">
+	            Development - Login
+	            <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+	        </button>
+	    	</a>
+    	</div>
+	</div>
+
+
+
+	<div id="appInformation" class="pull-right">
+		<h2>Informationen zu der App</h2>
+		<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

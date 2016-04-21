@@ -1,0 +1,21 @@
+<?php $__env->startSection('content'); ?>
+
+	<a href=" <?php echo url('users'); ?>">
+		<button type="button" class="btn btn-primary">Zurück zur User-Seite</button>
+	</a>
+
+	<h1>Der Projekttitel ist <?php echo $project->projektname; ?></h1>
+
+	<p>Die Anzahl der Teilnehmer beträgt: <?php echo $project->anzahl_der_personen; ?></p>
+	<p>Die Anzahl der Socialcreditpoints für diese Projekt betragen: <?php echo $project->anzahl_der_scp; ?></p>
+	<p>Die Engagementart dieses Projektes ist <?php echo $project->engagement_art; ?></p>
+	<p>Die Kategorie dieses Projektes ist <?php echo $project->kategorie; ?></p>
+	<p>Die Beschreibung dieses Projektes ist:</p>
+	<p><?php echo $project->beschreibung; ?></p>
+
+
+	<a href="<?php echo url('users/projekt/meineprojekte/abschliessen/'  . $project->slug); ?>">
+		<button class="btn btn-danger">Abschliessen</button>
+	</a>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

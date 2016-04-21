@@ -1,0 +1,22 @@
+<?php $__env->startSection('content'); ?>
+	
+    <a href=" <?php echo url('users'); ?>">
+        <button type="button" class="btn btn-primary">Zurück zu den Projekten</button>
+    </a>
+
+    <div class="loading">
+        <img src="<?php echo URL::asset('images/ajax-loader.gif'); ?>" alt="Loading"/>
+    </div>
+
+    <div class="scp">
+    <?php if(Session::get('userrole') == 1): ?>
+        <?php echo $__env->make('sites.users.profil.student.uebersicht', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php endif; ?>
+
+    <?php if(Session::get('userrole') == 3): ?>
+         <?php echo $__env->make('sites.users.profil.sgl.uebersicht', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php endif; ?>
+    </div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

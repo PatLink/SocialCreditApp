@@ -1,0 +1,8 @@
+    <?php foreach($studenten_des_sgl as $key => $student): ?>
+    <tr>
+        <td><?php echo $student->nachname; ?></td>
+        <td><?php echo $student->vorname; ?></td>
+        <td><?php echo $student->anzahl_der_scp_gesamt; ?>h von <?php echo $student->soll_workload; ?>h</td>
+        <td><?php echo $student->kuerzel; ?></td>
+    </tr>
+    <?php endforeach; ?>

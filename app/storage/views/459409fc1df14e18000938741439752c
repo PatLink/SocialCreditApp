@@ -1,0 +1,8 @@
+<?php $__env->startSection('content'); ?>
+<a href=" <?php echo url('users'); ?>">
+<button type="button" class="btn btn-primary">Zurück zur User-Seite</button>
+</a>
+
+    Projektdetail - Edit
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templates.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

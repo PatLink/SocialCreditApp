@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: SocialCreditPointsApp
+        psr4_prefix: SocialCreditPointsApp
+        src_path: app
